@@ -5,8 +5,8 @@
 module.exports = function(controller) {
 
     // use a function to match a condition in the message
-    controller.hears(async (message) => message.text && message.text.toLowerCase() === 'foo', ['message'], async (bot, message) => {
-        await bot.reply(message, 'I heard "foo" via a function test');
+    controller.hears(async (message) => message.text && ['foo','boo'].every(item => message.text.includes(item)) , ['message'], async (bot, message) => {
+        await bot.reply(message, 'I heard "foo" and "boo" via a function test');
     });
 
     // use a regular expression to match the text of the message
