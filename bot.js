@@ -28,7 +28,7 @@ if (process.env.MONGO_URI) {
 const adapter = new WebAdapter({});
 
 
-const controller = new Botkit({
+var controller = new Botkit({
     webhook_uri: '/api/messages',
 
     adapter: adapter,
