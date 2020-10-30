@@ -1,14 +1,23 @@
+
+// zip return array 
 const zip = (arr1, arr2) => arr1.map((k, i) => [k, arr2[i]]);
 
-const assign = (keys, valuesSet) => {
-    result = {} 
-    for (values in valuesSet)
-        result = {
-            ...result , 
-            ...Object.assign({}, ...keys.map((n, index) => ({[n]: values[index]})))
-        }
+const assignOne = (keys , values ) =>  Object.assign({}, ...keys.map((n, index) => ({[n]: values[index]}))) ; 
+
+
+function assign (keys , arrayOfarray) { 
+    result = []
+    for( i = 0 ; i < arrayOfarray.length ; i++ ){
+        array = arrayOfarray[i]
+        // console.log(array) 
+        temp = assignOne(keys , array )
+        // console.log(temp)
+        result.push(temp )
+        // console.log(result )
+    }
+        
     return result 
-} ; 
+} 
 
 
 //return array of array
@@ -16,5 +25,6 @@ const assign = (keys, valuesSet) => {
 
 module.exports = {
     zip : zip, 
-    assign : assign 
+    assign : assign , 
+    assignOne : assignOne , 
 }

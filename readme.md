@@ -24,3 +24,8 @@ Edit the samples, and add your own in the [features/](features/) folder.
 
 # how to update 
 1. run command `git pull https://github.com/HananoshikaYomaru/comp4461-botkit.git master`
+
+# current support features 
+1. attractions / games (where , queue , waiting time)
+2. first aid (where)
+3. smoking area (where)
