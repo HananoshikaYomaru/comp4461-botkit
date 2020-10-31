@@ -22,7 +22,7 @@ module.exports = function (controller) {
             success4 : andTest(text, [set3, set6]), 
             success5 : andTest(text, [set7,where_syn]) , 
             success6: andTest(text, [set3, where_syn]),
-            success7: andTest(text, set8),
+            success7: andTest(text, [set8]),
         }
            
         return result; 
