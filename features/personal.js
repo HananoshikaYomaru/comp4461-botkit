@@ -50,5 +50,5 @@ module.exports = function (controller ) {
     controller.hears (async (message) => trigger(message.text) && result.success6 , 'message,direct_message,direct_mention', async(bot, message) => {
         await bot.reply(message , "I am always with you sweetie 😚") ; 
     });
-    
+
 }
