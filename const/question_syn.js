@@ -5,6 +5,7 @@ const when_syn = ["schedule" , "time" , "when", "timetable"]
 const how_syn = ["way" , "method" , "how"]
 const any_syn = ["do" , "any"]
 const queue_syn = ["queue" , "how long", "people" , "wait"]
+
 const what_syn = ["what", "which" , "kind" , "type"]
 
 module.exports = {

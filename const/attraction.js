@@ -45,7 +45,7 @@ const attractions = {
 
 const attraction_keys = Object.keys(attractions)
 
-const attraction_syn = ["attraction", "game"]
+const attraction_syn = ["attraction", "game", "attractions" , "games"]
 
 module.exports  = { 
     attractions : attractions , 

@@ -1,5 +1,5 @@
 const { BotkitConversation } = require('botkit');
-const { smoking , smokingArea , smoking_syn}  = require ("../const/guest_services/smoking" ) ; 
+const { smoking , smokingArea , smoking_syn}  = require ("../const/smoking" ) ; 
 const {zip , assign } = require("../utils/zip") ; 
 const {andTest} = require("../utils/condition")
 const {where_syn , number_syn} = require("../const/question_syn") ; 

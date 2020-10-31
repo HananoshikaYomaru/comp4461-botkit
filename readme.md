@@ -28,4 +28,8 @@ Edit the samples, and add your own in the [features/](features/) folder.
 # current support features 
 1. attractions / games (where , queue , waiting time)
 2. first aid (where)
-3. smoking area (where)
+3. smoking area (where, how many)
+4. atm 
+5. first aid / medical  
+6. toliet / restroom 
+7. water 

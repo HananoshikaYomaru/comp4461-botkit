@@ -52,7 +52,7 @@ module.exports = function(controller) {
             for(i = 0 ; i < water.length ; i++ )
                 if(water[i]["area"] == area)
                     count++ ; 
-            return `There are ${count} water dispensor in ${area}`
+            return `There are ${count} water dispenser in ${area}`
         }
     } 
 

@@ -241,11 +241,15 @@ var Botkit = {
         var that = this;
         if (!that.next_line) {
             that.next_line = document.createElement('div');
+            // test = document.createElement("div")  ; 
+            // const newContent = document.createTextNode("Hi there and greetings!"); 
+            // test.appendChild(newContent)
+            // that.message_List.appendChild(test ) ; 
             that.message_list.appendChild(that.next_line);
         }
         if (message.text) {
             message.html = converter.makeHtml(message.text);
-        }
+        } 
 
         that.next_line.innerHTML = that.message_template({
             message: message
