@@ -3,13 +3,13 @@ const {andTest} = require("../utils/condition")
 const {zip , assign } = require("../utils/zip") ; 
 const { what_syn} = require("../const/question_syn") ;
 
-atm_syn = ["atm" , "cash" , "money" , "bank"]
+atm_syn = ["atm" , "cash" , "money" , "bank", "atms" , "banks"]
 
 module.exports = function(controller) { 
     const getBotReply = (key) => {
         if (key == "location") 
             return {
-                text : "let me show you all the atm in disney", 
+                text : "let me show you all the atms in disney", 
                 files : [{
                     url : "img/atm.png" ,
                     image: true 

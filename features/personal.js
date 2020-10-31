@@ -3,7 +3,6 @@ const {zip , assign} = require("../utils/zip") ;
 const {andTest} = require("../utils/condition"); 
 const {where_syn } = require("../const/question_syn") ; 
 
-const set1 = ["how are you" , "are you fine"]
 const set2 = ["hungry" , "starving" , "food"]
 const set3 = ["you" , "olaf"]
 const set4 = ["favourite" , "like" , "enjoy" , "love"]
@@ -16,7 +15,7 @@ module.exports = function (controller ) {
 
     const trigger = (text) => {
         result = {
-            success1 :  andTest(text, [ set1 ]) , 
+            success1 : text.includes("how are you") || text.includes("are you fine") , 
             success2 :  andTest(text, [set2, set3]) , 
             success3 : andTest(text,  [set3, set4, set5]), 
             success4 : andTest(text, [set3, set6]), 

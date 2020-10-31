@@ -144,8 +144,8 @@ a.button:hover {
 /* chat client */
 #message_window {
   background: #FFFFFF;
-  border-left: 1px solid #CCC;
-  border-right: 1px solid #CCC;
+  border-left: 0px solid #CCC;
+  border-right: 0px solid #CCC;
   /*height: 500px;
     width: 320px;*/
   height: 100%;
@@ -189,10 +189,10 @@ a.button:hover {
   -ms-flex-negative: 0;
       flex-shrink: 0;
   text-align: center;
-  border-bottom: 1px solid #CCC;
+  border-bottom: 0px solid #CCC;
   font-size: 14px;
   padding: 0.25rem;
-  color: #666;
+  color: #10315D;
 }
 
 #message_window .powered_by a {
@@ -225,7 +225,7 @@ a.button:hover {
 }
 
 #message_window footer {
-  border-top: 1px solid #CCC;
+  border-top: 0px solid #CCC;
   padding: 0.25rem;
 }
 

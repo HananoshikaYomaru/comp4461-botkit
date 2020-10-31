@@ -7,8 +7,8 @@ $human_message_text: white;
 
 #message_window {
     background: $background;
-    border-left: 1px solid #CCC;
-    border-right: 1px solid #CCC;
+    border-left: 0px solid #CCC;
+    border-right: 0px solid #CCC;
 
     /*height: 500px;
     width: 320px;*/
@@ -46,10 +46,10 @@ $human_message_text: white;
       flex-shrink: 0;
       text-align: center;
 
-      border-bottom: 1px solid #CCC;
+      border-bottom: 0px solid #CCC;
       font-size: 14px;
       padding: 0.25rem;
-      color: #666;
+      color: #10315D;
 
       a {
         text-decoration: none;
@@ -75,7 +75,7 @@ $human_message_text: white;
   }
 
   footer {
-      border-top: 1px solid #CCC;
+      border-top: 0px solid #CCC;
       padding: 0.25rem;
       input[type="text"] {
           flex-grow: 1;
