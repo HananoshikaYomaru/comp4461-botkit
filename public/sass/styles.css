@@ -142,6 +142,11 @@ a.button:hover {
 }
 
 /* chat client */
+@font-face {
+  font-family: "Itim";
+  src: url("../fonts/Itim-Regular.ttf");
+}
+
 #message_window {
   background: #FFFFFF;
   border-left: 0px solid #CCC;
@@ -190,9 +195,12 @@ a.button:hover {
       flex-shrink: 0;
   text-align: center;
   border-bottom: 0px solid #CCC;
-  font-size: 14px;
+  font-size: 28px;
+  font-weight: bold;
   padding: 0.25rem;
-  color: #10315D;
+  color: white;
+  background: #10315D;
+  font-family: "Itim";
 }
 
 #message_window .powered_by a {
@@ -217,6 +225,7 @@ a.button:hover {
   display: -ms-flexbox;
   display: flex;
   overflow-y: auto;
+  background-image: url("../img/frontend/background.png");
 }
 
 #message_window section div div {
@@ -226,6 +235,7 @@ a.button:hover {
 
 #message_window footer {
   border-top: 0px solid #CCC;
+  background: #10315D;
   padding: 0.25rem;
 }
 
@@ -233,9 +243,15 @@ a.button:hover {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  font-size: 1.25rem;
+  font-size: 1rem;
   outline: none;
   border: none;
+  border-radius: 10px;
+  padding-left: 12px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-family: "Itim";
+  color: #10315D;
 }
 
 #message_window footer button {
@@ -268,6 +284,7 @@ a.button:hover {
   width: auto;
   display: inline-block;
   max-width: 75%;
+  font-family: "Itim";
 }
 
 #message_window .file_attachment {
@@ -309,7 +326,7 @@ a.button:hover {
 
 #message_window .message.outgoing {
   float: right;
-  background: #a795ef;
+  background: #10315D;
   color: white;
 }
 
@@ -326,6 +343,7 @@ a.button:hover {
   list-style-type: none;
   margin: 0px auto;
   padding: 0;
+  background: #10315D;
 }
 
 #message_window #message_replies ul li {
@@ -337,16 +355,20 @@ a.button:hover {
 #message_window #message_replies a {
   text-decoration: none;
   display: block;
-  border: 1px solid #a795ef;
-  color: #a795ef;
+  border: 1px solid #10315D;
+  color: #10315D;
   border-radius: 16px;
   padding: 0.25rem 1rem;
   font-size: 14px;
+  font-family: "Itim";
+  background: white;
   cursor: pointer;
 }
 
 #message_window #message_replies a:hover {
-  background: #a795ef;
+  background: #061220;
+  font-weight: bold;
+  font-size: 30 px;
   color: #FFF;
 }
 

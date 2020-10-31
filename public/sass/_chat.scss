@@ -2,8 +2,14 @@ $action_color: orange;
 $background: #FFFFFF;
 $bot_message_background: #F0F0F0;
 $bot_message_text: #333;
-$human_message_background: $botkit_purple;
+$human_message_background: $botkit_blue;
 $human_message_text: white;
+$botkit_font : "Itim" ; 
+
+@font-face {
+  font-family : "Itim" ; 
+  src : url("../fonts/Itim-Regular.ttf") ; 
+}
 
 #message_window {
     background: $background;
@@ -47,9 +53,13 @@ $human_message_text: white;
       text-align: center;
 
       border-bottom: 0px solid #CCC;
-      font-size: 14px;
+      font-size: 28px;
+      font-weight: bold;
       padding: 0.25rem;
-      color: #10315D;
+      color: white;
+      background :  $botkit_blue ; 
+      font-family: $botkit_font;
+
 
       a {
         text-decoration: none;
@@ -67,6 +77,7 @@ $human_message_text: white;
       flex-direction: column-reverse;
       display: flex;
       overflow-y: auto;
+      background-image: url("../img/frontend/background.png");
 
      div div {
         margin: 0.25rem;
@@ -76,12 +87,19 @@ $human_message_text: white;
 
   footer {
       border-top: 0px solid #CCC;
+      background : $botkit_blue ; 
       padding: 0.25rem;
       input[type="text"] {
           flex-grow: 1;
-          font-size: 1.25rem;
+          font-size: 1rem;
           outline: none;
           border: none;
+          border-radius: 10px;
+          padding-left: 12px ; 
+          padding-top : 3px ; 
+          padding-bottom: 3px;
+          font-family: $botkit_font;
+          color : $botkit_blue ; 
       }
       button {
          width: 50px;
@@ -112,7 +130,7 @@ $human_message_text: white;
       width: auto;
       display: inline-block;
       max-width: 75%;
-
+      font-family : $botkit_font ; 
   }
 
   .file_attachment {
@@ -172,6 +190,7 @@ $human_message_text: white;
           list-style-type: none;
           margin: 0px auto;
           padding: 0;
+          background : $botkit_blue ; 
           li {
               display: inline-block;
               margin: 0.5rem;
@@ -182,15 +201,19 @@ $human_message_text: white;
       a {
          text-decoration: none;
          display: block;
-         border: 1px solid $botkit_purple;
-         color: $botkit_purple;
+         border: 1px solid $botkit_blue;
+         color: $botkit_blue;
          border-radius: 16px;
          padding: 0.25rem 1rem;
          font-size: 14px;
+         font-family : $botkit_font ; 
+         background : white ; 
          cursor: pointer;
 
          &:hover {
-           background: $botkit_purple;
+           background: #061220;
+           font-weight: bold;
+           font-size : 30 px ; 
            color: #FFF;
          }
      }
