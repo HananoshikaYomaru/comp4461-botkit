@@ -5,9 +5,9 @@ const {andTest} = require("../utils/condition")
 const {where_syn , number_syn} = require("../const/question_syn") ; 
 
 module.exports = function(controller) { 
-    const SOMKING_WHERE = "smoking_where"
+    const SMOKING_WHERE = "smoking_where"
     const SMOKING_NUMBER = "smoking_number"
-    let smoking_where = new BotkitConversation(SOMKING_WHERE , controller) ; 
+    let smoking_where = new BotkitConversation(SMOKING_WHERE , controller) ; 
     smoking_where.ask({
         text : "which location ? " , 
         quick_replies : assign(["title", "payload"] , zip(smokingArea , smokingArea))
@@ -27,7 +27,7 @@ module.exports = function(controller) {
             files : files
         }
     } 
-    controller.afterDialog(SOMKING_WHERE , async(bot, results) => {
+    controller.afterDialog(SMOKING_WHERE , async(bot, results) => {
         await bot.say(getBotReply(results.location)); 
     })
 
@@ -45,7 +45,7 @@ module.exports = function(controller) {
     controller.addDialog(smoking_where);  
 
     controller.hears(async(message) => trigger(message.text) && result.success1  , 'message,direct_message,direct_mention', async(bot, message) => {
-        await bot.beginDialog(SOMKING_WHERE);
+        await bot.beginDialog(SMOKING_WHERE);
     })
 
     controller.hears(async(message) => trigger(message.text) && result.success2  , 'message,direct_message,direct_mention', async(bot, message) => {

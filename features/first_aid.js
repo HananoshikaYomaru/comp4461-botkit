@@ -22,6 +22,13 @@ module.exports = function (controller) {
         quick_replies : assign(["title", "payload"] , zip(first_aid_keys , first_aid_keys))
     }, [] , "location") 
 
+    controller.addDialog(first_aid_where) ; 
+
+    controller.afterDialog(FIRST_AID_WHERE , async(bot, results) => {
+        await bot.say(getBotReply(results.location)); 
+    })
+    // -----------------------------------------------------------
+
     const getBotReply = (location) => {
         return  {
             text : `the first aid location is right here`  , 
@@ -31,12 +38,6 @@ module.exports = function (controller) {
             }
         }
     } 
-
-    controller.addDialog(first_aid_where) ; 
-
-    controller.afterDialog(FIRST_AID_WHERE , async(bot, results) => {
-        await bot.say(getBotReply(results.location)); 
-    })
 
     result = {} 
     const trigger = (text) => { 
