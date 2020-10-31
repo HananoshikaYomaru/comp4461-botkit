@@ -7,9 +7,6 @@ module.exports = function (controller) {
     test1.ask('What is your name?', [], 'name');
     test1.say('{{vars.name}}')
 
-    
-    
-
     let test2 = new BotkitConversation("test" , controller ) ; 
 
     test2.ask('test2?', [], 'name');
@@ -18,8 +15,7 @@ module.exports = function (controller) {
     test1.addChildDialog(test2 , 'test2')
 
     controller.addDialog(test1) ; 
-    controller.addDialog(test2)
-
+    controller.addDialog(test2) ; 
 
 
     controller.hears( "test" , 'message,direct_message,direct_mention', async(bot, message) => {

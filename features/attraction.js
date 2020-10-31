@@ -13,6 +13,7 @@ module.exports = function (controller) {
         quick_replies : assign(["title" , "payload"] , zip(attraction_keys , attraction_keys) )
     }, [] , "destination" );
     controller.afterDialog(ATTRACTION_WHERE , async(bot, results) => {
+        await bot.say("No worries dear, let me show you 🤠")
         await bot.say(getBotReply(results.destination, ATTRACTION_WHERE)); 
     })
     controller.addDialog(attraction_where) ; 
@@ -26,6 +27,7 @@ module.exports = function (controller) {
         quick_replies : assign(["title" , "payload"] , zip(attraction_keys , attraction_keys) )
     }, [] , "destination" );
     controller.afterDialog(ATTRACTION_QUEUE , async(bot, results) => {
+        await bot.say("Seems quite a lot of people there...")
         await bot.say(getBotReply(results.destination, ATTRACTION_QUEUE)); 
     })
     controller.addDialog(attraciton_queue) ; 
@@ -78,18 +80,16 @@ module.exports = function (controller) {
     });
 
     controller.hears( async(message) => trigger(message.text) && result.success2 , 'message,direct_message,direct_mention', async(bot, message) => {
-        keys = result.options.keys 
-        destination = keys[0]
-        await bot.reply(message , getBotReply(destination , ATTRACTION_WHERE)); 
+        await bot.say("No worries dear, let me show you 🤠")
+        await bot.say(getBotReply(results.destination, ATTRACTION_WHERE)); 
     });
 
     controller.hears (async(message) => trigger(message.text) && result.success3 , 'message,direct_message,direct_mention', async(bot, message) => {
         await bot.beginDialog(ATTRACTION_QUEUE); 
     }) 
     controller.hears (async(message) => trigger(message.text) && result.success4 , 'message,direct_message,direct_mention', async(bot, message) => {
-        keys = result.options.keys 
-        destination = keys[0]
-        await bot.reply(message , getBotReply(destination, ATTRACTION_QUEUE)); 
+        await bot.say("Seems quite a lot of people there...")
+        await bot.say(getBotReply(results.destination, ATTRACTION_QUEUE)); 
     }) 
 
 }
