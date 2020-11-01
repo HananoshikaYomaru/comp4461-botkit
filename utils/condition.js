@@ -1,6 +1,6 @@
 
 
-const blackList_words = ["i","hi",'it',].map(item => item.toLowerCase())
+const blackList_words = ["i","hi",'it',"thx" ].map(item => item.toLowerCase())
 
 const andTest = (text ,sets) => {
     text = text.toLowerCase().replace (',', ' ').replace('.' , ' ') .replace('?' , ' ').replace('!' , ' '); 
