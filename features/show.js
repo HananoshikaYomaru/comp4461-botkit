@@ -61,13 +61,7 @@ module.exports = function (controller)
 				}
 			};
 		
-		function scheduleDisplay(strings, schedule)
-		{
-			var 
-			for (i = 0; i < schedule.length(); i++)
-				
-			return `${strings[0]}`;
-		}
+
 		if (convo_id == SHOW_SCHEDULE)
 			return `This is the schedule for "${destination}" today: ${shows[destination]['schedule']}`;
     } 
