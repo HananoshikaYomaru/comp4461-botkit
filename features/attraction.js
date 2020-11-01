@@ -2,6 +2,7 @@ const { BotkitConversation } = require('botkit');
 const { attractions , attraction_keys , attraction_syn}  = require ("../const/attraction" ) ; 
 const {zip , assign} = require("../utils/zip") ; 
 const {where_syn, queue_syn } = require("../const/question_syn") ; 
+const {show_syn } = require("../const/command_syn")  ;
 const {andTest} = require("../utils/condition")
 
 module.exports = function (controller) {
@@ -35,6 +36,34 @@ module.exports = function (controller) {
 
     //===============================================================
 
+    const ATTRACTION_INFO = "attraction_info" 
+    let attraction_info = new BotkitConversation(ATTRACTION_INFO , controller)  ;
+    attraction_info.ask({
+        text : "what kind of info do you want to know?", 
+        quick_replies : assign(["title" , "payload"] , [["attraction" , "attraction"] , ["waiting time" , "waiting time"]])
+    }, [
+        {
+            pattern: "attraction",
+            handler: async(res, convo, bot) => {
+                await convo.gotoThread(ATTRACTION_WHERE); 
+                // convo
+            }
+        },
+        {
+            pattern: "waiting",
+            handler: async(res, convo, bot) => {
+                await convo.gotoThread(ATTRACTION_QUEUE);
+                // convo
+            }
+        }
+    ] , "choice")
+    attraction_info.addGotoDialog(ATTRACTION_WHERE, ATTRACTION_WHERE);
+    attraction_info.addGotoDialog(ATTRACTION_QUEUE, ATTRACTION_QUEUE);
+    controller.addDialog(attraction_info) ; 
+
+    //===============================================================
+
+
     const getBotReply = (destination , convo_id) => {
         if(convo_id == ATTRACTION_WHERE)
             return  {
@@ -61,12 +90,14 @@ module.exports = function (controller) {
         success2 = andTest(text, [attraction_keys , where_syn]) ;
         success3 = andTest(text, [attraction_syn , queue_syn ])  ;
         success4 = andTest(text ,[attraction_keys , queue_syn])   ;  
+        success5 = andTest(text , [attraction_syn,  show_syn ]) ; 
 
         result = {
             success1 :  success1, 
             success2 : success2, 
             success3 : success3   ,
             success4 : success4 , 
+            success5 : success5 , 
             options : {
                 keys : keys , 
             } 
@@ -87,9 +118,14 @@ module.exports = function (controller) {
     controller.hears (async(message) => trigger(message.text) && result.success3 , 'message,direct_message,direct_mention', async(bot, message) => {
         await bot.beginDialog(ATTRACTION_QUEUE); 
     }) 
+
     controller.hears (async(message) => trigger(message.text) && result.success4 , 'message,direct_message,direct_mention', async(bot, message) => {
         await bot.say("Seems quite a lot of people there...")
         await bot.say(getBotReply(results.destination, ATTRACTION_QUEUE)); 
+    }) 
+
+    controller.hears (async(message) => trigger(message.text) && result.success5 , 'message,direct_message,direct_mention', async(bot, message) => {
+        await bot.beginDialog(ATTRACTION_INFO); 
     }) 
 
 }

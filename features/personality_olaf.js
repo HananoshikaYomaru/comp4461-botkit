@@ -23,6 +23,7 @@ module.exports = function (controller) {
             success5 : andTest(text, [set7,where_syn]) , 
             success6: andTest(text, [set3, where_syn]),
             success7: andTest(text, [set8]),
+            success8 : andTest(text ,  [["elsa"] ,  where_syn ]) , 
         }
            
         return result; 
@@ -55,6 +56,11 @@ module.exports = function (controller) {
     controller.hears(async (message) => trigger(message.text) && result.success7, 'message,direct_message,direct_mention', async (bot, message) =>
     {
         await bot.reply(message , "Hi, friend!") ; 
+    });
+
+    controller.hears(async (message) => trigger(message.text) && result.success8, 'message,direct_message,direct_mention', async (bot, message) =>
+    {
+        await bot.reply(message , "I think Elsa is at Main Street, USA") ; 
     });
 
 }
