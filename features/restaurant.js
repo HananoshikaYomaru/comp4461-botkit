@@ -78,7 +78,7 @@ module.exports = function (controller)
         })
 		
 		success_syn_where = andTest(text, [restaurant_syn, where_syn]);
-		success_key_where = andTest(text, [restaurant_keys, where_syn]);
+		success_key_where = andTest(text, [ where_syn , restaurant_keys]); 
 		success_syn_queue = andTest(text, [restaurant_syn, queue_syn]);
 		success_key_queue = andTest(text, [restaurant_keys, queue_syn]);
 

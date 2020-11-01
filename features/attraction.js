@@ -3,7 +3,7 @@ const { attractions , attraction_keys , attraction_syn}  = require ("../const/at
 const {zip , assign} = require("../utils/zip") ; 
 const {where_syn, queue_syn } = require("../const/question_syn") ; 
 const {show_syn } = require("../const/command_syn")  ;
-const {andTest} = require("../utils/condition")
+const {andTest, andTestNotExact} = require("../utils/condition")
 
 module.exports = function (controller) {
 
@@ -40,10 +40,10 @@ module.exports = function (controller) {
     let attraction_info = new BotkitConversation(ATTRACTION_INFO , controller)  ;
     attraction_info.ask({
         text : "what kind of info do you want to know?", 
-        quick_replies : assign(["title" , "payload"] , [["attraction" , "attraction"] , ["waiting time" , "waiting time"]])
+        quick_replies : assign(["title" , "payload"] , [["location" , "location"] , ["waiting time" , "waiting time"]])
     }, [
         {
-            pattern: "attraction",
+            pattern: "location",
             handler: async(res, convo, bot) => {
                 await convo.gotoThread(ATTRACTION_WHERE); 
                 // convo
@@ -87,9 +87,9 @@ module.exports = function (controller) {
         })
         
         success1 = andTest(text, [attraction_syn , where_syn]) ; 
-        success2 = andTest(text, [attraction_keys , where_syn]) ;
+        success2 = andTest(text, [where_syn, attraction_keys]);
         success3 = andTest(text, [attraction_syn , queue_syn ])  ;
-        success4 = andTest(text ,[attraction_keys , queue_syn])   ;  
+        success4 = andTest(text , [queue_syn, attraction_keys])  ;  
         success5 = andTest(text , [attraction_syn,  show_syn ]) ; 
 
         result = {
@@ -110,18 +110,21 @@ module.exports = function (controller) {
         await bot.beginDialog(ATTRACTION_WHERE);
     });
 
+    // direct 
     controller.hears( async(message) => trigger(message.text) && result.success2 , 'message,direct_message,direct_mention', async(bot, message) => {
         await bot.say("No worries dear, let me show you 🤠")
-        await bot.say(getBotReply(results.destination, ATTRACTION_WHERE)); 
+        await bot.say(getBotReply(result.options.keys[0], ATTRACTION_WHERE)); 
     });
 
     controller.hears (async(message) => trigger(message.text) && result.success3 , 'message,direct_message,direct_mention', async(bot, message) => {
         await bot.beginDialog(ATTRACTION_QUEUE); 
     }) 
 
+
+    //direct 
     controller.hears (async(message) => trigger(message.text) && result.success4 , 'message,direct_message,direct_mention', async(bot, message) => {
         await bot.say("Seems quite a lot of people there...")
-        await bot.say(getBotReply(results.destination, ATTRACTION_QUEUE)); 
+        await bot.say(getBotReply(result.options.keys[0], ATTRACTION_QUEUE)); 
     }) 
 
     controller.hears (async(message) => trigger(message.text) && result.success5 , 'message,direct_message,direct_mention', async(bot, message) => {

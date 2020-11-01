@@ -1,13 +1,13 @@
-# Botkit Starter Kit
+<p align="center">
+    <img width="100" height="100" src="public/img/frontend/olaf.png"></a>
+    <br />
+</p>
 
-This is a Botkit starter kit for web, created with the [Yeoman generator](https://github.com/howdyai/botkit/tree/master/packages/generator-botkit#readme).
+# COMP4461 project 2 - ChatBot working prototype 
 
-To complete the configuration of this bot, make sure to update the included `.env` file with your platform tokens and credentials.
+This is a chatbot for theme park. It provides interactive dialogs to users to answers their questions as well as improve their customer experience. Ideally, users can choose different characters as the personality of the chatbot. In this prototype, we use Disney as the context and Olaf as the personality. 
 
-[Botkit Docs](https://botkit.ai/docs/v4)
-
-This bot is powered by [a folder full of modules](https://botkit.ai/docs/v4/core.html#organize-your-bot-code). 
-Edit the samples, and add your own in the [features/](features/) folder.
+![demo](img/chatbot_demo.gif)
 
 # how to start 
 
@@ -33,3 +33,14 @@ Edit the samples, and add your own in the [features/](features/) folder.
 5. first aid / medical  
 6. toliet / restroom 
 7. water 
+
+# Botkit Starter Kit
+
+This is a Botkit starter kit for web, created with the [Yeoman generator](https://github.com/howdyai/botkit/tree/master/packages/generator-botkit#readme).
+
+To complete the configuration of this bot, make sure to update the included `.env` file with your platform tokens and credentials.
+
+[Botkit Docs](https://botkit.ai/docs/v4)
+
+This bot is powered by [a folder full of modules](https://botkit.ai/docs/v4/core.html#organize-your-bot-code). 
+Edit the samples, and add your own in the [features/](features/) folder.

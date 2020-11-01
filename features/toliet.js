@@ -4,7 +4,7 @@ const {zip , assign } = require("../utils/zip") ;
 const { where_syn } = require("../const/question_syn") ;
 const { show_syn } = require("../const/command_syn") ;
 
-toliet_syn = ["toliets" , "washroom" , "toliet" , "washroom" ]
+toliet_syn = ["toliets" , "washroom" , "toliet" , "washrooms" , "restroom" , "restrooms"]
 
 module.exports = function(controller) { 
     const getBotReply = (key) => {

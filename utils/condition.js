@@ -1,11 +1,15 @@
-// set is an array 
+
+
+const blackList_words = ["i","hi",'it',].map(item => item.toLowerCase())
+
 const andTest = (text ,sets) => {
-    temp = text.split(' ') ; 
-    temp = temp.map(v => v.toLowerCase () )
+    text = text.toLowerCase().replace (',', ' ').replace('.' , ' ') .replace('?' , ' ').replace('!' , ' '); 
+    temp = text.split(" ")  ;
     // console.log(temp)
     for (i = 0 ; i < sets.length ; i++){
         // console.log(sets[i])
-        if(!sets[i].some(item => temp.includes(item.toLowerCase())))
+        tempSet = sets[i].map(item => item.toLowerCase() )
+        if(!tempSet.some(item => (blackList_words.includes(item) && temp.some(item2=>item==item2)) || (!blackList_words.includes(item) && text.includes(item))))
             return false ;
         // console.log(true)
     }

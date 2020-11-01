@@ -1,10 +1,10 @@
 const { BotkitConversation } = require('botkit');
 const { zip, assign } = require("../utils/zip"); 
 const { andTest } = require("../utils/condition"); 
-const { where_syn } = require("../const/question_syn"); 
+const { where_syn , number_syn, } = require("../const/question_syn"); 
 
 const set2 = ["hungry", "starving", "food"]
-const set3 = ["you" , "olaf"]
+const set3 = ["you" , "olaf", "your"]
 const set4 = ["favourite" , "like" , "enjoy" , "love"]
 const set5 = ["weather" , "season"]
 const set6 = ["name", "call"]
