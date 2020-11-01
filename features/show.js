@@ -1,6 +1,7 @@
 const { BotkitConversation } = require('botkit');
 const { shows, show_keys, show_syn } = require("../const/show");
 const { where_syn, when_syn } = require("../const/question_syn");
+const { remind_syn } = require("../const/command_syn") ; 
 const { zip, assign } = require("../utils/zip");
 const { andTest } = require("../utils/condition");
 
@@ -47,6 +48,18 @@ module.exports = function (controller)
 	
 	controller.addDialog(show_schedule);
 
+	// remind 
+	const SHOW_REMIND = "show_remind" ; 
+	let show_remind = new BotkitConversation (SHOW_REMIND , controller) ; 
+	show_remind.ask(
+		{
+			text: "Which show?",
+			quick_replies: assign(["title", "payload"], zip(show_keys, show_keys))
+		}, async(res, convo, bot) => {
+			await bot.say(getBotReply(res,SHOW_REMIND))
+			// convo
+		}, "destination");
+	controller.addDialog(show_remind)
 //===============================================================
 
 	const getBotReply = (destination, convo_id) =>
@@ -63,6 +76,9 @@ module.exports = function (controller)
 		
 		if (convo_id == SHOW_SCHEDULE)
 			return `This is the schedule for "${destination}" today: ${shows[destination]['schedule']}`;
+
+		if (convo_id == SHOW_REMIND) 
+			return `I will remind you at 30 minutes before the next ${destination}`
     } 
 
 	var result = {};
@@ -81,12 +97,16 @@ module.exports = function (controller)
 		success_key_where = andTest(text, [show_keys, where_syn]);
 		success_syn_queue = andTest(text, [show_syn, when_syn]);
 		success_key_queue = andTest(text, [show_keys, when_syn]);
+		success_syn_remind = andTest(text , [show_syn , remind_syn] ) ; 
+		success_key_remind = andTest(text, [remind_syn , show_keys ] ) ;
 
 		result = {
 			success_syn_where: success_syn_where,
 			success_key_where: success_key_where,
 			success_syn_queue: success_syn_queue,
 			success_key_queue: success_key_queue,
+			success_syn_remind : success_syn_remind , 
+			success_key_remind : success_key_remind,
 			options:
 			{
 				keys: keys,
@@ -130,5 +150,22 @@ module.exports = function (controller)
 		keys = result.options.keys;
 		destination = keys[0];
 		await bot.reply(message, getBotReply(destination, SHOW_SCHEDULE));
+	});
+
+	//remind 
+	controller.hears(async (message) => trigger(message.text) && result.success_key_remind,
+		"message, direct_message, direct_mention",
+		async (bot, message) =>
+	{
+		keys = result.options.keys;
+		destination = keys[0];
+		await bot.reply(message, `I will remind you at 30 minutes before the next ${destination}`)
+	});
+
+	controller.hears(async (message) => trigger(message.text) && result.success_syn_remind,
+		"message, direct_message, direct_mention",
+		async (bot, message) =>
+	{
+		await bot.beginDialog(SHOW_REMIND)
 	});
 }
