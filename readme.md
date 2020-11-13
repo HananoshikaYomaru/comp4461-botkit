@@ -1,7 +1,13 @@
+
+
 <p align="center">
     <img width="100" height="100" src="public/img/frontend/olaf.png"></a>
     <br />
 </p>
+
+# Note 
+
+This project is moved to https://github.com/HananoshikaYomaru/comp4461-botkit2
 
 # COMP4461 project 2 - ChatBot working prototype 
 
